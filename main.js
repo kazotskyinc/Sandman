@@ -1,4 +1,5 @@
 const {app, Tray, Menu, shell, BrowserWindow} = require("electron"); //electron application stuff
+const EA = require("electron-analytics");
 const path = require("path"); //allows for use of path
 const url = require("url"); //allows for loadURL and url.format
 const iconPath = path.join(__dirname, "icon.png"); //grab the icon
@@ -35,6 +36,10 @@ function getCloseOnXPref()
 }
 
 app.on("ready", function(){
+
+  EA.init("SJe_hKq5xW"); // nuetrino metrics app id
+
+
   win = new BrowserWindow({width: 600, height: 475, resizable: false}); //create main window
 
   win.setMenu(null); //the main window had no menu
